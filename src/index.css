@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,4 +15,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-toast-card {
+  border-left: 4px solid #2196f3; /* Color y tamaño del borde izquierdo */
+  padding-left: 12px; /* Espaciado izquierdo para el contenido del mensaje */
 }
