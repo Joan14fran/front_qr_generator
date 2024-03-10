@@ -27,3 +27,10 @@ export const loginUser = (username: string, password: string): Promise<AxiosResp
   return authApi.post('login/', data);
 };
 
+export const logoutUser = (): Promise<AxiosResponse<void>> => {
+  const token = localStorage.getItem('token');
+  const headers = { Authorization: `Token ${token}` };
+
+  return authApi.post('logout/', null, { headers });
+};
+

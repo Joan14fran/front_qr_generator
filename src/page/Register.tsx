@@ -1,19 +1,22 @@
 // Register.tsx
 
 //importaciones
-import React, { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom'
 
 
 import { Toast } from 'primereact/toast';
-
+import { Password } from 'primereact/password';
 import { createUser } from '../api/users.api'
+
+import { Header } from '../components/Header'
 
 
 
 export function Register() {
 
+  const [value, setValue] = useState('');
   // Añade un ref para el componente Toast
   const toast = useRef(null);
 
@@ -47,7 +50,9 @@ export function Register() {
   };
 
   return (
-    <section className="">
+    <section className="p-4 ">
+
+      <Header />
       <Toast ref={toast} />
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -64,29 +69,29 @@ export function Register() {
                 </div>
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
-                  <input type="text" {...register('apellido', { required: true })} className="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Apellido" />
+                  <input type="text" {...register('apellido', { required: true })} className="p-inputtext p-component bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Apellido" />
                   {errors.apellido && <span className='text-red-500 text-xs'>Apellido es requerido</span>}
                 </div>
               </div>
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
-                <input type="email" {...register('email', { required: true })} className="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="correo@example.com" />
+                <input type="email" {...register('email', { required: true })} className="p-inputtext p-component bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="correo@example.com" />
                 {errors.email && <span className='text-red-500 text-xs'>Correo es requerido</span>}
               </div>
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                <input type="username" {...register('username', { required: true })} className="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="pepito_perez" />
+                <input type="username" {...register('username', { required: true })} className="p-inputtext p-component bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="pepito_perez" />
                 {errors.username && <span className='text-red-500 text-xs'>Username es requerido</span>}
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
-                  <input type="password" {...register('password', { required: true })} placeholder="••••••••" className="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                  <input type="password" {...register('password', { required: true })} placeholder="••••••••" className="p-inputtext p-component bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                   {errors.password && <span className='text-red-500 text-xs'>Contraseña es requerido</span>}
                 </div>
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar Contraseña</label>
-                  <input type="password" {...register('confirm_password', { required: true })} placeholder="••••••••" className="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                  <input type="password" {...register('confirm_password', { required: true })} placeholder="••••••••" className="p-inputtext p-component bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                   {errors.confirm_password && <span className='text-red-500 text-xs'>Confirme su contraseña</span>}
                 </div>
               </div>

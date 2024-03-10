@@ -20,8 +20,8 @@ function App() {
   return (
 
     <BrowserRouter>
+
       <div className='container mx-auto'>
-        <Header />
 
         <Routes>
           <Route path='/' element={<Navigate to='/home' />} />
@@ -29,12 +29,14 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/dashboard' element={<Dashboard />} />
+
         </Routes>
 
         <Footer />
       </div>
-
     </BrowserRouter>
+
+
 
   )
 
