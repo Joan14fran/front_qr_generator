@@ -1,13 +1,12 @@
 import { SidebarComp } from '../components/SidebarComp'
 
-
-export function Dashboard() {
+export function ListQrs() {
   return (
     <div className='p-4'>
       <SidebarComp />
-      <h3>Page Dashboard</h3>
+      <h3>Page QRs</h3>
     </div>
   )
 }
 
-export default Dashboard
+export default ListQrs

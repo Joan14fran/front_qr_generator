@@ -19,6 +19,8 @@ const authApi = axios.create({
 
 export const createUser = (user: User): Promise<AxiosResponse<User>> => userApi.post('/', user);
 
+export const getUsers = (): Promise<AxiosResponse<User[]>> => userApi.get('/');
+
 export const loginUser = (username: string, password: string): Promise<AxiosResponse<{ token: string }>> => {
   const data = {
     username,

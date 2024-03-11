@@ -1,13 +1,11 @@
 import { SidebarComp } from '../components/SidebarComp'
-
-
-export function Dashboard() {
+export function Perfil() {
   return (
     <div className='p-4'>
       <SidebarComp />
-      <h3>Page Dashboard</h3>
+      <h3>Page Perfil</h3>
     </div>
   )
 }
 
-export default Dashboard
+export default Perfil

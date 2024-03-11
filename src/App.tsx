@@ -1,19 +1,15 @@
 // App.tsx
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Header } from './components/Header'
-import { Home } from './page/Home'
-import { Login } from './page/Login'
-import { Register } from './page/Register'
+import { Home } from './page/home/Home'
+import { Login } from './page/home/Login'
+import { Register } from './page/home/Register'
 import { Dashboard } from './page/Dashboard'
+import { ListUsers } from './page/ListUsers'
+import { ListQrs } from './page/ListQrs'
+import { Perfil } from './page/Perfil'
+
 import { Footer } from './components/Footer'
-
-import 'primereact/resources/themes/lara-dark-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-
-
-
 
 function App() {
 
@@ -29,10 +25,12 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/usuarios' element={<ListUsers />} />
+          <Route path='/qrs' element={<ListQrs />} />
+          <Route path='/perfil' element={<Perfil />} />
 
+          {/* <Footer /> */}
         </Routes>
-
-        <Footer />
       </div>
     </BrowserRouter>
 

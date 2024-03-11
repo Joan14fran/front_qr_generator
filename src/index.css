@@ -1,23 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  background-color: #000000; /* Cambia este color al que desees */
 }
 
-.custom-toast-card {
-  border-left: 4px solid #2196f3; /* Color y tamaño del borde izquierdo */
-  padding-left: 12px; /* Espaciado izquierdo para el contenido del mensaje */
+/* Desactiva el subrayado en los enlaces */
+a {
+  text-decoration: none !important;
+}
+
+/* Cambia el color de los enlaces (si es necesario) */
+a,
+a:hover,
+a:focus {
+  color: inherit !important;
+}
+
+.icon-container {
+  margin-right: 20px; /* Ajusta el espacio entre el icono y el texto según sea necesario */
+  font-size: 24px; /* Ajusta el tamaño del icono según sea necesario */
+}
+.hover-effect:hover {
+  background-color: #0080ff; /* Cambia el color de fondo al pasar el mouse */
+  transition: background-color 0.3s ease; /* Agrega una transición suave */
 }
