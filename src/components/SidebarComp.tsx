@@ -38,7 +38,18 @@ export function SidebarComp() {
         {
             label: 'Usuarios',
             icon: 'pi pi-users',
-            command: () => handleNavigate('/usuarios'),
+            items: [
+                {
+                    label: 'Lista de Usuarios',
+                    icon: 'pi pi-user',
+                    command: () => handleNavigate('/usuarios'),
+                },
+                {
+                    label: 'Crear Usuario',
+                    icon: 'pi pi-plus',
+                    command: () => handleNavigate('/formuser-create'),
+                },
+            ]
         },
         {
             label: 'Mi QRs',

@@ -21,6 +21,12 @@ export const createUser = (user: User): Promise<AxiosResponse<User>> => userApi.
 
 export const getUsers = (): Promise<AxiosResponse<User[]>> => userApi.get('/');
 
+export const getUser = (userId: number): Promise<AxiosResponse<User>> => userApi.get(`/${userId}/`);
+
+export const updateUser = (userId: number, updatedUser: User): Promise<AxiosResponse<User>> => userApi.put(`/${userId}/`, updatedUser);
+
+export const deleteUser = (userId: number): Promise<AxiosResponse<void>> => userApi.delete(`/${userId}/`);
+
 export const loginUser = (username: string, password: string): Promise<AxiosResponse<{ token: string }>> => {
   const data = {
     username,
@@ -35,4 +41,3 @@ export const logoutUser = (): Promise<AxiosResponse<void>> => {
 
   return authApi.post('logout/', null, { headers });
 };
-
