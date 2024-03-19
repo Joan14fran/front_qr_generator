@@ -7,8 +7,6 @@ import { Dashboard } from './page/Dashboard'
 import { ListUsers } from './page/ListUsers'
 import { ListQrs } from './page/ListQrs'
 import { Perfil } from './page/Perfil'
-import { FormUser } from './page/FormUser'
-
 import { Footer } from './components/Footer'
 
 function App() {
@@ -28,8 +26,6 @@ function App() {
           <Route path='/usuarios' element={<ListUsers />} />
           <Route path='/qrs' element={<ListQrs />} />
           <Route path='/perfil' element={<Perfil />} />
-          <Route path='/formuser-create' element={<FormUser />} />
-          <Route path='/formuser:id' element={<FormUser />} />
 
           {/* <Footer /> */}
         </Routes>

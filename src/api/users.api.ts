@@ -13,10 +13,6 @@ const userApi = axios.create({
   baseURL: 'http://localhost:8000/users/api/users/',
 });
 
-const authApi = axios.create({
-  baseURL: 'http://localhost:8000/users/api/',
-});
-
 export const createUser = (user: User): Promise<AxiosResponse<User>> => userApi.post('/', user);
 
 export const getUsers = (): Promise<AxiosResponse<User[]>> => userApi.get('/');
@@ -26,6 +22,11 @@ export const getUser = (userId: number): Promise<AxiosResponse<User>> => userApi
 export const updateUser = (userId: number, updatedUser: User): Promise<AxiosResponse<User>> => userApi.put(`/${userId}/`, updatedUser);
 
 export const deleteUser = (userId: number): Promise<AxiosResponse<void>> => userApi.delete(`/${userId}/`);
+
+
+const authApi = axios.create({
+  baseURL: 'http://localhost:8000/users/api/',
+});
 
 export const loginUser = (username: string, password: string): Promise<AxiosResponse<{ token: string }>> => {
   const data = {

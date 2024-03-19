@@ -44,11 +44,6 @@ export function SidebarComp() {
                     icon: 'pi pi-user',
                     command: () => handleNavigate('/usuarios'),
                 },
-                {
-                    label: 'Crear Usuario',
-                    icon: 'pi pi-plus',
-                    command: () => handleNavigate('/formuser-create'),
-                },
             ]
         },
         {
