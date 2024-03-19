@@ -1,4 +1,4 @@
-import { SidebarComp } from '../components/SidebarComp'
+import { SidebarComp } from '../../components/SidebarComp'
 export function Perfil() {
   return (
     <div className='p-4'>

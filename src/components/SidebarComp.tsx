@@ -53,7 +53,7 @@ export function SidebarComp() {
                 {
                     label: 'Crear QR',
                     icon: 'pi pi-plus',
-                    command: () => handleNavigate('/qrs'),
+                    command: () => handleNavigate('/create_qrs'),
                 },
                 {
                     label: 'Administrar QR',

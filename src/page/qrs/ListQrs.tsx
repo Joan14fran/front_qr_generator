@@ -1,4 +1,4 @@
-import { SidebarComp } from '../components/SidebarComp'
+import { SidebarComp } from '../../components/SidebarComp'
 
 export function ListQrs() {
   return (
