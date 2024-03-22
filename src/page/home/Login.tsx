@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { Toast } from 'primereact/toast';
@@ -8,8 +8,6 @@ import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { loginUser } from '../../api/users.api';
 import { Header } from '../../components/Header';
-
-
 
 interface LoginForm {
   username: string;
@@ -24,6 +22,14 @@ export function Login() {
   const showToast = (severity, summary, detail) => {
     toast.current.show({ severity, summary, detail });
   };
+
+  useEffect(() => {
+    // Verificar si el usuario está autenticado al cargar el componente
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/dashboard');
+    }
+  }, [navigate]);
 
   const onSubmit = async (data: LoginForm) => {
     try {
@@ -104,8 +110,5 @@ export function Login() {
         </div>
       </div>
     </div>
-
   );
 }
-
-export default Login;

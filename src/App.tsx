@@ -7,8 +7,7 @@ import { Dashboard } from './page/panel/Dashboard'
 import { ListUsers } from './page/users/ListUsers'
 import { CreateQrs } from './page/qrs/CreateQrs'
 import { ListQrs } from './page/qrs/ListQrs'
-import { Perfil } from './page/qrs/Perfil'
-import { Footer } from './components/Footer'
+import { Perfil } from './page/panel/Perfil'
 
 function App() {
 
@@ -28,8 +27,6 @@ function App() {
           <Route path='/qrs' element={<ListQrs />} />
           <Route path='/perfil' element={<Perfil />} />
           <Route path='/create_qrs' element={<CreateQrs />} />
-
-          {/* <Footer /> */}
         </Routes>
       </div>
     </BrowserRouter>
