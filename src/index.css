@@ -22,3 +22,12 @@ a:focus {
   background-color: #0080ff; /* Cambia el color de fondo al pasar el mouse */
   transition: background-color 0.3s ease; /* Agrega una transición suave */
 }
+
+.custom-border {
+  border: 1px solid rgb(71, 71, 71); /* Color gris opaco */
+}
+
+.custom-border:hover {
+  border-color: rgba(71, 71, 71); /* Cambia el color del borde al pasar el mouse */
+  background-color: rgba(170, 170, 170, 0.05); /* Cambia el color de fondo al pasar el mouse */
+}

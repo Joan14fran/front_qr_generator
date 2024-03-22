@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Menubar } from 'primereact/menubar';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
+import { Avatar } from 'primereact/avatar';
 
 import { logoutUser } from '../api/users.api';
 
@@ -75,17 +76,17 @@ export function SidebarComp() {
     );
 
     return (
-        <div className="p-4">
+        <div className="">
             <Menubar model={items} end={end} />
 
-            <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="layout-profile-sidebar bg-dark text-light">
+            <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="">
                 <div className="d-flex flex-column mx-auto md:mx-0">
                     <span className="mb-2 font-weight-bold">Bienvenido</span>
                     <span className="text-muted font-medium mb-5">Johan Peña</span>
 
                     <ul className="list-unstyled m-0 p-0">
-                        <li>
-                            <Link to="/perfil" className="cursor-pointer d-flex border mb-3 p-3 align-items-center border-4 border-secondary border-dark rounded transition-duration-150">
+                        <li className="custom-border mb-3 rounded transition-duration-150">
+                            <Link to="/perfil" className="cursor-pointer d-flex p-3 align-items-center border-4 border-secondary border-dark rounded">
                                 <span className="icon-container">
                                     <i className="pi pi-user text-xl" style={{ color: 'slateblue' }}></i>
                                 </span>
@@ -95,8 +96,8 @@ export function SidebarComp() {
                                 </div>
                             </Link>
                         </li>
-                        <li>
-                            <a href="#" className="d-flex border mb-3 p-3 align-items-center border-1 border-dark rounded transition-duration-150">
+                        <li className="custom-border mb-3 rounded transition-duration-150">
+                            <a href="#" className="d-flex p-3 align-items-center border-1 border-dark rounded">
                                 <span className="icon-container">
                                     <i className="pi pi-id-card text-xl" style={{ color: 'slateblue' }}></i>
                                 </span>
@@ -106,8 +107,8 @@ export function SidebarComp() {
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="#" className="cursor-pointer d-flex border mb-3 p-3 align-items-center border-1 border-dark rounded transition-duration-150" onClick={handleLogout}>
+                        <li className="custom-border mb-3 rounded transition-duration-150">
+                            <a href="#" className="cursor-pointer d-flex p-3 align-items-center border-1 border-dark rounded" onClick={handleLogout}>
                                 <span className="icon-container">
                                     <i className="pi pi-power-off text-xl text-danger" style={{ color: '' }}></i>
                                 </span>
@@ -118,9 +119,14 @@ export function SidebarComp() {
                             </a>
                         </li>
                     </ul>
+
+                    <div className="mt-auto">
+                        <hr className="mb-3 mx-3 border-top-1 border-none surface-border" />
+                    </div>
                 </div>
             </Sidebar>
         </div>
+
 
     )
 }

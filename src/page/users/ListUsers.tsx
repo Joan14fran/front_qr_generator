@@ -269,7 +269,7 @@ export function ListUsers() {
 
         <Toolbar className="mb-4" start={butoonAction} end={header}></Toolbar>
 
-        <DataTable value={users} filters={filters} globalFilterFields={['nombre', 'apellido', 'username', 'email', 'is_staff']} paginator rows={10} showGridlines tableStyle={{ minWidth: '50rem' }} dataKey="id" selectionMode="single" selection={selectedUser} onSelectionChange={(e) => setSelectedUser(e.value)}>
+        <DataTable value={users} filters={filters} globalFilterFields={['nombre', 'apellido', 'username', 'email', 'is_staff']} paginator rows={5} rowsPerPageOptions={[5, 7, 25, 50]} showGridlines tableStyle={{ minWidth: '50rem' }} dataKey="id" selectionMode="single" selection={selectedUser} onSelectionChange={(e) => setSelectedUser(e.value)}>
           <Column selectionMode="single" headerStyle={{ width: '3rem' }}></Column>
           <Column field="id" header="ID" />
           <Column field="nombre" header="Nombre" filter filterPlaceholder="Search by nombre" style={{ minWidth: '12rem' }} />

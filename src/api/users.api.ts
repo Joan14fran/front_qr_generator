@@ -1,5 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 interface User {
   id: number;
@@ -10,32 +9,32 @@ interface User {
   password: string;
 }
 
+// Este cliente Axios se utilizará para las solicitudes de creación de usuarios
+const createUserApi: AxiosInstance = axios.create({
+  baseURL: 'http://localhost:8000/users/api/users/',
+});
+
+export const createUser = (user: User): Promise<AxiosResponse<User>> => createUserApi.post<User>('/', user);
+
+// El resto de tus funciones se mantienen igual
+
 const userApi: AxiosInstance = axios.create({
   baseURL: 'http://localhost:8000/users/api/users/',
 });
 
-userApi.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Token ${token}`;
-  } else {
-    throw new Error('No se encontró el token de autenticación');
-  }
-  return config;
-});
+userApi.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Token ${token}`;
+    } else {
+      window.location.href = '/login';
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
-// Crear un hook para redirigir al login
-const useRedirectToLogin = () => {
-  const navigate = useNavigate();
-
-  const redirectToLogin = () => {
-    navigate('/login');
-  };
-
-  return redirectToLogin;
-};
-
-export const createUser = (user: User): Promise<AxiosResponse<User>> => userApi.post<User>('/', user);
 export const getUsers = (): Promise<AxiosResponse<User[]>> => userApi.get<User[]>('/');
 export const getUser = (userId: number): Promise<AxiosResponse<User>> => userApi.get<User>(`/${userId}/`);
 export const updateUser = (userId: number, updatedUser: User): Promise<AxiosResponse<User>> => userApi.put<User>(`/${userId}/`, updatedUser);
@@ -58,15 +57,3 @@ export const logoutUser = (): Promise<AxiosResponse<void>> => {
   const headers = { Authorization: `Token ${token}` };
   return authApi.post<void>('logout/', null, { headers });
 };
-
-// Interceptar errores de solicitud para redirigir al usuario al login si no tiene un token
-userApi.interceptors.response.use(
-  (response) => response,
-  (error: AxiosError) => {
-    if (error.response && error.response.status === 401) {
-      const redirectToLogin = useRedirectToLogin();
-      redirectToLogin();
-    }
-    return Promise.reject(error);
-  }
-);
