@@ -264,7 +264,7 @@ export function ListUsers() {
   return (
     <div className='p-4'>
       <SidebarComp />
-      <div className="card">
+      <div className="p-4">
         <Toast ref={toast} />
 
         <Toolbar className="mb-4" start={butoonAction} end={header}></Toolbar>

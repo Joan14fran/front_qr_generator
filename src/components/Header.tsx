@@ -36,7 +36,7 @@ export function Header() {
     },
   ];
   return (
-    <div className="card">
+    <div className="">
       <Menubar model={items} />
     </div>
   )

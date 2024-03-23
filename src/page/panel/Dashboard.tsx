@@ -1,13 +1,13 @@
-import { SidebarComp } from '../../components/SidebarComp'
-
+import { SidebarComp } from '../../components/SidebarComp';
+import { Button } from 'primereact/button';
 
 export function Dashboard() {
   return (
-    <div className='p-4'>
+    <div className="p-4">
       <SidebarComp />
-      <h3>Page Dashboard</h3>
+      <p>dashboard</p>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

@@ -1,18 +1,44 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Menubar } from 'primereact/menubar';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
-import { Avatar } from 'primereact/avatar';
 
-import { logoutUser } from '../api/users.api';
+import { logoutUser, getUserData } from '../api/users.api';
 
 import '../assets/styles/layout.css'
 
+interface User{
+    id: number,
+    nombre: string,
+    apellido: string,
+    username: string,
+    email: string,
+    if_staff: boolean,
+    is_active: boolean
+}
 export function SidebarComp() {
 
     const [visibleRight, setVisibleRight] = useState(false);
     const navigate = useNavigate(); // Utiliza useNavigate para redirigir al usuario
+    const [userData, setUserData] = useState<User | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getUserData();
+                setUserData(response.data);
+            } catch (error) {
+                console.error('Error al obtener los datos del usuario:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    if (!userData) {
+        return <div>Cargando...</div>;
+    }
+
 
     const handleLogout = async () => {
         try {
@@ -28,7 +54,6 @@ export function SidebarComp() {
         // Utiliza la función navigate de react-router-dom para cambiar la ruta
         navigate(path);
     };
-
 
     const items = [
         {
@@ -76,13 +101,13 @@ export function SidebarComp() {
     );
 
     return (
-        <div className="">
+        <div className="P-4">
             <Menubar model={items} end={end} />
 
             <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="">
                 <div className="d-flex flex-column mx-auto md:mx-0">
                     <span className="mb-2 font-weight-bold">Bienvenido</span>
-                    <span className="text-muted font-medium mb-5">Johan Peña</span>
+                    <span className="text-muted font-medium mb-5">{userData.nombre}</span>
 
                     <ul className="list-unstyled m-0 p-0">
                         <li className="custom-border mb-3 rounded transition-duration-150">
@@ -92,7 +117,7 @@ export function SidebarComp() {
                                 </span>
                                 <div className="ml-3">
                                     <span className="mb-2 font-weight-bold">Perfil</span>
-                                    <p className="text-muted m-0">Usuario</p>
+                                    <p className="text-muted m-0">{userData.nombre}</p>
                                 </div>
                             </Link>
                         </li>
@@ -102,8 +127,8 @@ export function SidebarComp() {
                                     <i className="pi pi-id-card text-xl" style={{ color: 'slateblue' }}></i>
                                 </span>
                                 <div className="ml-3">
-                                    <span className="mb-2 font-weight-bold">johan@gmail.com</span>
-                                    <p className="text-muted m-0">300 223 2968</p>
+                                    <span className="mb-2 font-weight-bold">{userData.email}</span>
+                                    <p className="text-muted m-0">{userData.username}</p>
                                 </div>
                             </a>
                         </li>

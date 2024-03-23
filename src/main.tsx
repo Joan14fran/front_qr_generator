@@ -6,7 +6,7 @@ import './assets/styles/layout.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootswatch/dist/darkly/bootstrap.min.css';
-import 'primereact/resources/themes/lara-dark-indigo/theme.css';
+import 'primereact/resources/themes/viva-dark/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 

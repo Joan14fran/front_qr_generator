@@ -40,20 +40,40 @@ export const getUser = (userId: number): Promise<AxiosResponse<User>> => userApi
 export const updateUser = (userId: number, updatedUser: User): Promise<AxiosResponse<User>> => userApi.put<User>(`/${userId}/`, updatedUser);
 export const deleteUser = (userId: number): Promise<AxiosResponse<void>> => userApi.delete<void>(`/${userId}/`);
 
+export const getUserData = async (): Promise<AxiosResponse<User>> => {
+  const userId = localStorage.getItem('user_id');
+  if (!userId) {
+    throw new Error('No se encontró el ID de usuario');
+  }
+  return userApi.get<User>(`${userId}/`);
+}
+
+
 const authApi: AxiosInstance = axios.create({
   baseURL: 'http://localhost:8000/users/api/',
 });
 
-export const loginUser = (username: string, password: string): Promise<AxiosResponse<{ token: string }>> => {
+export const loginUser = async (username: string, password: string): Promise<AxiosResponse<{ token: string, user_id: number }>> => {
   const data = { username, password };
-  return authApi.post<{ token: string }>('login/', data);
-};
+  const response = await authApi.post<{ token: string, user_id: number }>('login/', data);
+  
+  // Almacenar token y ID del usuario en el almacenamiento local
+  localStorage.setItem('token', response.data.token);
+  localStorage.setItem('user_id', response.data.user_id.toString()); // Convertir a string
+  
+  return response;
+}
 
-export const logoutUser = (): Promise<AxiosResponse<void>> => {
+
+export const logoutUser = async (): Promise<AxiosResponse<void>> => {
   const token = localStorage.getItem('token');
-  if (!token) {
-    throw new Error('No se encontró el token de autenticación');
+  const userId = localStorage.getItem('user_id');
+  if (!token || !userId) {
+      throw new Error('No se encontró el token de autenticación o el ID de usuario');
   }
   const headers = { Authorization: `Token ${token}` };
+  localStorage.removeItem('token'); // Eliminar el token del almacenamiento local
+  localStorage.removeItem('user_id'); // Eliminar el ID del usuario del almacenamiento local
   return authApi.post<void>('logout/', null, { headers });
-};
+}
+

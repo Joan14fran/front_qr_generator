@@ -51,7 +51,7 @@ export function Login() {
     <div className="container mt-5">
       <Header />
       <br />
-      <div className="card">
+      <div className="">
         <div className="card-body">
           <Toast ref={toast} />
           <form className="p-fluid p-d-flex p-flex-column p-ai-center" onSubmit={handleSubmit(onSubmit)}>
