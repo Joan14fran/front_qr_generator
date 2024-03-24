@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Menubar } from 'primereact/menubar';
 import { Sidebar } from 'primereact/sidebar';
-import { Button } from 'primereact/button';
+import { Avatar } from 'primereact/avatar'
+import { Button } from 'primereact/button'
 
 import { logoutUser, getUserData } from '../api/users.api';
 
@@ -96,7 +97,8 @@ export function SidebarComp() {
 
     const end = (
         <div className="flex align-items-center gap-2">
-            <Button icon="pi pi-align-justify" onClick={() => setVisibleRight(true)} rounded text severity="secondary" aria-label="justify" />
+            <Button icon="pi pi-cog" rounded text aria-label="Cancel" />
+            <Avatar icon="pi pi-user" className="m-2" style={{ backgroundColor: '#2196F3', color: '#ffffff' }} onClick={() => setVisibleRight(true)} shape="circle" />
         </div>
     );
 

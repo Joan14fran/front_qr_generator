@@ -1,11 +1,18 @@
 import { SidebarComp } from '../../components/SidebarComp';
-import { Button } from 'primereact/button';
+import { Fieldset } from 'primereact/fieldset'
+import { Card } from 'primereact/card'
+
 
 export function Dashboard() {
   return (
     <div className="p-4">
       <SidebarComp />
-      <p>dashboard</p>
+      <br />
+      <Fieldset>
+        <Card title="Dash Board">
+
+        </Card>
+      </Fieldset>
     </div>
   );
 }

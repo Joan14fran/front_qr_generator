@@ -16,6 +16,9 @@ import { Toast } from 'primereact/toast';
 import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
 import { Tag } from 'primereact/tag';
 
+import { Fieldset } from 'primereact/fieldset'
+import { Card } from 'primereact/card'
+
 
 interface User {
   id: number;
@@ -264,22 +267,27 @@ export function ListUsers() {
   return (
     <div className='p-4'>
       <SidebarComp />
-      <div className="p-4">
-        <Toast ref={toast} />
+      <Toast ref={toast} />
+      <br />
+      <Fieldset>
 
         <Toolbar className="mb-4" start={butoonAction} end={header}></Toolbar>
 
-        <DataTable value={users} filters={filters} globalFilterFields={['nombre', 'apellido', 'username', 'email', 'is_staff']} paginator rows={5} rowsPerPageOptions={[5, 7, 25, 50]} showGridlines tableStyle={{ minWidth: '50rem' }} dataKey="id" selectionMode="single" selection={selectedUser} onSelectionChange={(e) => setSelectedUser(e.value)}>
-          <Column selectionMode="single" headerStyle={{ width: '3rem' }}></Column>
-          <Column field="id" header="ID" />
-          <Column field="nombre" header="Nombre" filter filterPlaceholder="Search by nombre" style={{ minWidth: '12rem' }} />
-          <Column field="apellido" header="Apellido" filter filterPlaceholder="Search by apellido" style={{ minWidth: '12rem' }} />
-          <Column field="username" header="Username" filter filterPlaceholder="Search by username" style={{ minWidth: '12rem' }} />
-          <Column field="email" header="Email" filter filterPlaceholder="Search by email" style={{ minWidth: '12rem' }} />
-          <Column field="is_staff" header="Admin" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={statusBodyTemplate} filter filterElement={statusFilterTemplate} />
-          <Column field="is_active" header="Activo" dataType="boolean" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={verifiedBodyTemplate} filter filterElement={verifiedFilterTemplate} />
-        </DataTable>
-      </div>
+        <Card title="Lista Usuario">
+          <DataTable value={users} filters={filters} globalFilterFields={['nombre', 'apellido', 'username', 'email', 'is_staff']} paginator rows={5} rowsPerPageOptions={[5, 7, 25, 50]} tableStyle={{ minWidth: '50rem' }} dataKey="id" selectionMode="single" selection={selectedUser} onSelectionChange={(e) => setSelectedUser(e.value)}>
+            <Column selectionMode="single" headerStyle={{ width: '3rem' }}></Column>
+            <Column field="id" header="ID" />
+            <Column field="nombre" header="Nombre" filter filterPlaceholder="Search by nombre" style={{ minWidth: '12rem' }} />
+            <Column field="apellido" header="Apellido" filter filterPlaceholder="Search by apellido" style={{ minWidth: '12rem' }} />
+            <Column field="username" header="Username" filter filterPlaceholder="Search by username" style={{ minWidth: '12rem' }} />
+            <Column field="email" header="Email" filter filterPlaceholder="Search by email" style={{ minWidth: '12rem' }} />
+            <Column field="is_staff" header="Admin" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={statusBodyTemplate} filter filterElement={statusFilterTemplate} />
+            <Column field="is_active" header="Activo" dataType="boolean" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={verifiedBodyTemplate} filter filterElement={verifiedFilterTemplate} />
+          </DataTable>
+        </Card>
+
+      </Fieldset>
+
       <Dialog visible={displayDialog} style={{ width: '32rem' }} breakpoints={{ '960px': '75vw', '641px': '90vw' }} onHide={() => {
         setDisplayDialog(false);
         reset();
