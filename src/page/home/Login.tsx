@@ -19,9 +19,11 @@ export function Login() {
   const navigate = useNavigate();
   const toast = useRef(null);
 
-  const showToast = (severity, summary, detail) => {
-    toast.current.show({ severity, summary, detail });
-  };
+  const showToast = (severity: string, summary: string, detail: string) => {
+    if (toast.current) {
+        toast.current.show({ severity, summary, detail });
+    }
+};
 
   useEffect(() => {
     // Verificar si el usuario está autenticado al cargar el componente
