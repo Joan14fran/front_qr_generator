@@ -7,6 +7,8 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { loginUser } from '../../api/users.api';
+import { Fieldset } from 'primereact/fieldset'
+import { Card } from 'primereact/card'
 import { Header } from '../../components/Header';
 
 interface LoginForm {
@@ -21,9 +23,9 @@ export function Login() {
 
   const showToast = (severity: string, summary: string, detail: string) => {
     if (toast.current) {
-        toast.current.show({ severity, summary, detail });
+      toast.current.show({ severity, summary, detail });
     }
-};
+  };
 
   useEffect(() => {
     // Verificar si el usuario está autenticado al cargar el componente
@@ -56,59 +58,63 @@ export function Login() {
       <div className="">
         <div className="card-body">
           <Toast ref={toast} />
-          <form className="p-fluid p-d-flex p-flex-column p-ai-center" onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-3">
-              <Controller
-                name="username"
-                control={control}
-                rules={{ required: 'Username es requerido.' }}
-                render={({ field, fieldState }) => (
-                  <>
-                    <label htmlFor={field.name} className={classNames({ 'p-error': errors.username })}></label>
-                    <span className="p-float-label">
-                      <InputText
-                        id={field.name}
-                        value={field.value}
-                        className={classNames({ 'p-invalid': fieldState.error })}
-                        onChange={(e) => field.onChange(e.target.value)}
-                      />
-                      <label htmlFor={field.name}>Username</label>
-                    </span>
-                    {errors.username && <small className='text-danger'>{errors.username.message}</small>}
-                  </>
-                )}
-              />
-            </div>
-            <div className="mb-3">
-              <Controller
-                name="password"
-                control={control}
-                rules={{ required: 'Contraseña es requerida.' }}
-                render={({ field, fieldState }) => (
-                  <>
-                    <label htmlFor={field.name} className={classNames({ 'p-error': errors.password })}></label>
-                    <span className="p-float-label">
-                      <Password
-                        id={field.name}
-                        value={field.value}
-                        className={classNames({ 'p-invalid': fieldState.error })}
-                        onChange={(e) => field.onChange(e.target.value)}
-                        toggleMask
-                        feedback={false}
-                      />
-                      <label htmlFor={field.name}>Contraseña</label>
-                    </span>
-                    {errors.password && <small className='text-danger'>{errors.password.message}</small>}
-                  </>
-                )}
-              />
-            </div>
-            <Button label="Submit" type='submit' icon="pi pi-check" iconPos="right" className="mt-3" />
-            <Link to="/register" className="text-sm font-light text-gray-500 dark:text-gray-400 mt-2 d-flex align-items-center">
-              <p className="m-0 me-2">¿Aún no tienes una cuenta?</p>
-              <button type="button" className="btn btn-outline-primary btn-sm">Registrate</button>
-            </Link>
-          </form>
+          <Fieldset>
+            <Card>
+              <form className="p-fluid p-d-flex p-flex-column p-ai-center" onSubmit={handleSubmit(onSubmit)}>
+                <div className="mb-3">
+                  <Controller
+                    name="username"
+                    control={control}
+                    rules={{ required: 'Username es requerido.' }}
+                    render={({ field, fieldState }) => (
+                      <>
+                        <label htmlFor={field.name} className={classNames({ 'p-error': errors.username })}></label>
+                        <span className="p-float-label">
+                          <InputText
+                            id={field.name}
+                            value={field.value}
+                            className={classNames({ 'p-invalid': fieldState.error })}
+                            onChange={(e) => field.onChange(e.target.value)}
+                          />
+                          <label htmlFor={field.name}>Username</label>
+                        </span>
+                        {errors.username && <small className='text-danger'>{errors.username.message}</small>}
+                      </>
+                    )}
+                  />
+                </div>
+                <div className="mb-3">
+                  <Controller
+                    name="password"
+                    control={control}
+                    rules={{ required: 'Contraseña es requerida.' }}
+                    render={({ field, fieldState }) => (
+                      <>
+                        <label htmlFor={field.name} className={classNames({ 'p-error': errors.password })}></label>
+                        <span className="p-float-label">
+                          <Password
+                            id={field.name}
+                            value={field.value}
+                            className={classNames({ 'p-invalid': fieldState.error })}
+                            onChange={(e) => field.onChange(e.target.value)}
+                            toggleMask
+                            feedback={false}
+                          />
+                          <label htmlFor={field.name}>Contraseña</label>
+                        </span>
+                        {errors.password && <small className='text-danger'>{errors.password.message}</small>}
+                      </>
+                    )}
+                  />
+                </div>
+                <Button label="Submit" type='submit' icon="pi pi-check" iconPos="right" className="mt-3" />
+                <Link to="/register" className="text-sm font-light text-gray-500 dark:text-gray-400 mt-2 d-flex align-items-center">
+                  <p className="m-0 me-2">¿Aún no tienes una cuenta?</p>
+                  <button type="button" className="btn btn-outline-primary btn-sm">Registrate</button>
+                </Link>
+              </form>
+            </Card>
+          </Fieldset>
         </div>
       </div>
     </div>

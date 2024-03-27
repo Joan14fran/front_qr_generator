@@ -87,20 +87,16 @@ export function CreateQrsUrl() {
 
                         <div className="row m-2 m-md-4">
                             <div className="col-12 col-md-6">
-                                <div className="p-inputgroup">
-                                    <span className="p-inputgroup-addon">
-                                        Nombre:
-                                    </span>
-                                    <InputText value={qrName} onChange={(e) => setQRName(e.target.value)} />
-                                </div>
+                                <span className="p-float-label">
+                                    <InputText id="nombre" value={qrName} onChange={(e) => setQRName(e.target.value)} style={{ width: '100%' }} />
+                                    <label htmlFor="nombre">Nombre</label>
+                                </span>
                             </div>
                             <div className="col-12 col-md-6 mt-2 mt-md-0">
-                                <div className="p-inputgroup">
-                                    <span className="p-inputgroup-addon">
-                                        URL:
-                                    </span>
-                                    <InputText value={qrContent} onChange={(e) => setQRContent(e.target.value)} />
-                                </div>
+                                <span className="p-float-label">
+                                    <InputText id="contenido" value={qrContent} onChange={(e) => setQRContent(e.target.value)} style={{ width: '100%' }} />
+                                    <label htmlFor="contenido">URL</label>
+                                </span>
                             </div>
                         </div>
                         <div className="d-flex justify-content-center">
@@ -129,24 +125,16 @@ export function CreateQrsUrl() {
                             </div>
                         </div>
                         <br />
-                        <div className="col-12 col-md-6">
-                            <div className="p-inputgroup">
-                                <span className="p-inputgroup-addon" style={{ width: '100%' }}>
-                                    Guardar y Administrar QR
-                                </span>
-                                <Button icon="pi pi-cog" severity="secondary" type="submit" style={{ width: '40%' }} />
-                                <i className="pi pi-question m-2 m-md-4" style={{ color: 'var(--primary-color)' }}></i>
+                        <div className="container text-center">
+                            <div className="col">
+                                <Button icon="pi pi-cog" label='Guardar y Administrar QR' severity="secondary" type="submit" style={{ width: '100%' }} />
                             </div>
                         </div>
                         <br />
                     </form>
-                    <div className="col-12 col-md-6 mt-2 mt-md-0">
-                        <div className="p-inputgroup">
-                            <span className="p-inputgroup-addon" style={{ width: '100%' }}>
-                                Descargar QR
-                            </span>
-                            <Button icon="pi pi-download" severity="help" onClick={handleDownloadQR} style={{ width: '40%' }} />
-                            <i className="pi pi-question m-2 m-md-4" style={{ color: 'var(--primary-color)' }}></i>
+                    <div className="container text-center">
+                        <div className="col mt-2 mt-md-0">
+                            <Button icon="pi pi-download" label='Descargar QR' severity="help" onClick={handleDownloadQR} style={{ width: '100%' }} />
                         </div>
                     </div>
                 </Card>

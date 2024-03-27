@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 import { createUser } from '../../api/users.api';
 import { Header } from '../../components/Header';
 import { Divider } from 'primereact/divider';
+import { Fieldset } from 'primereact/fieldset'
+import { Card } from 'primereact/card'
 
 interface FormData {
   nombre: string;
@@ -86,154 +88,158 @@ export function Register() {
       <div className="">
         <div className="card-body">
           <Toast ref={toast} />
-          <form className="p-fluid p-d-flex p-flex-column p-ai-center" onSubmit={handleSubmit(onSubmit)}>
-            <div className="row g-3">
-              <div className="col">
-                <Controller name="nombre" control={control} rules={{ required: 'Nombre es requerido.' }}
-                  render={({ field, fieldState }) => (
-                    <>
-                      <label htmlFor={field.name} className={classNames({ 'p-error': errors.nombre })}></label>
-                      <span className="p-float-label">
-                        <InputText
-                          id={field.name}
-                          value={field.value}
-                          className={classNames({ 'p-invalid': fieldState.error })}
-                          onChange={(e) => field.onChange(e.target.value)}
-                        />
-                        <label htmlFor={field.name}>Nombre</label>
-                      </span>
-                      {getFormErrorMessage('nombre')}
-                    </>
-                  )}
-                />
-              </div>
-              <div className="col">
-                <Controller name="apellido" control={control} rules={{ required: 'Apellido es requerido.' }}
-                  render={({ field, fieldState }) => (
-                    <>
-                      <label htmlFor={field.name} className={classNames({ 'p-error': errors.apellido })}></label>
-                      <span className="p-float-label">
-                        <InputText
-                          id={field.name}
-                          value={field.value}
-                          className={classNames({ 'p-invalid': fieldState.error })}
-                          onChange={(e) => field.onChange(e.target.value)}
-                        />
-                        <label htmlFor={field.name}>Apellido</label>
-                      </span>
-                      {getFormErrorMessage('apellido')}
-                    </>
-                  )}
-                />
-              </div>
-            </div>
-            <div className="mb-3">
-              <Controller
-                name="email"
-                control={control}
-                rules={{
-                  required: 'Correo es requerido.',
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    message: 'Correo electrónico inválido.',
-                  },
-                }}
-                render={({ field, fieldState }) => (
-                  <>
-                    <label htmlFor={field.name} className={classNames({ 'p-error': errors.email })}></label>
-                    <span className="p-float-label">
-                      <InputText
-                        id={field.name}
-                        value={field.value}
-                        className={classNames({ 'p-invalid': fieldState.error })}
-                        onChange={(e) => field.onChange(e.target.value)}
-                      />
-                      <label htmlFor={field.name}>Correo</label>
-                    </span>
-                    {getFormErrorMessage('email')}
-                  </>
-                )}
-              />
-            </div>
-            <div className="mb-3">
-              <Controller name="username" control={control} rules={{ required: 'Username es requerido.' }}
-                render={({ field, fieldState }) => (
-                  <>
-                    <label htmlFor={field.name} className={classNames({ 'p-error': errors.username })}></label>
-                    <span className="p-float-label">
-                      <InputText
-                        id={field.name}
-                        value={field.value}
-                        className={classNames({ 'p-invalid': fieldState.error })}
-                        onChange={(e) => field.onChange(e.target.value)}
-                      />
-                      <label htmlFor={field.name}>Username</label>
-                    </span>
-                    {getFormErrorMessage('username')}
-                  </>
-                )}
-              />
-            </div>
-            <div className="row g-3">
-              <div className="col">
-                <Controller
-                  name="password"
-                  control={control}
-                  rules={{ required: 'Contraseña es requerida.' }}
-                  render={({ field, fieldState }) => (
-                    <>
-                      <label htmlFor={field.name} className={classNames({ 'p-error': errors.password })}></label>
-                      <span className="p-float-label">
-                        <Password
-                          id={field.name}
-                          value={field.value}
-                          className={classNames({ 'p-invalid': fieldState.error })}
-                          onChange={(e) => field.onChange(e.target.value)}
-                          toggleMask
-                          footer={footer}
-                        />
-                        <label htmlFor={field.name}>Contraseña</label>
-                      </span>
-                      {getFormErrorMessage('password')}
-                    </>
-                  )}
-                />
-              </div>
-              <div className="col">
-                <Controller
-                  name="confirm_password"
-                  control={control}
-                  rules={{
-                    required: 'Confirmar contraseña es requerido.',
-                    validate: value => value === password || 'Las contraseñas no coinciden'
-                  }}
-                  render={({ field, fieldState }) => (
-                    <>
-                      <label htmlFor={field.name} className={classNames({ 'p-error': errors.confirm_password })}></label>
-                      <span className="p-float-label">
-                        <Password
-                          id={field.name}
-                          value={field.value}
-                          className={classNames({ 'p-invalid': fieldState.error })}
-                          onChange={(e) => field.onChange(e.target.value)}
-                          toggleMask
-                          feedback={false}
-                        />
-                        <label htmlFor={field.name}>Confirmar Contraseña</label>
-                      </span>
-                      {getFormErrorMessage('confirm_password')}
-                    </>
-                  )}
-                />
-              </div>
-            </div>
+          <Fieldset>
+            <Card>
+              <form className="p-fluid p-d-flex p-flex-column p-ai-center" onSubmit={handleSubmit(onSubmit)}>
+                <div className="row g-3">
+                  <div className="col">
+                    <Controller name="nombre" control={control} rules={{ required: 'Nombre es requerido.' }}
+                      render={({ field, fieldState }) => (
+                        <>
+                          <label htmlFor={field.name} className={classNames({ 'p-error': errors.nombre })}></label>
+                          <span className="p-float-label">
+                            <InputText
+                              id={field.name}
+                              value={field.value}
+                              className={classNames({ 'p-invalid': fieldState.error })}
+                              onChange={(e) => field.onChange(e.target.value)}
+                            />
+                            <label htmlFor={field.name}>Nombre</label>
+                          </span>
+                          {getFormErrorMessage('nombre')}
+                        </>
+                      )}
+                    />
+                  </div>
+                  <div className="col">
+                    <Controller name="apellido" control={control} rules={{ required: 'Apellido es requerido.' }}
+                      render={({ field, fieldState }) => (
+                        <>
+                          <label htmlFor={field.name} className={classNames({ 'p-error': errors.apellido })}></label>
+                          <span className="p-float-label">
+                            <InputText
+                              id={field.name}
+                              value={field.value}
+                              className={classNames({ 'p-invalid': fieldState.error })}
+                              onChange={(e) => field.onChange(e.target.value)}
+                            />
+                            <label htmlFor={field.name}>Apellido</label>
+                          </span>
+                          {getFormErrorMessage('apellido')}
+                        </>
+                      )}
+                    />
+                  </div>
+                </div>
+                <div className="mb-3">
+                  <Controller
+                    name="email"
+                    control={control}
+                    rules={{
+                      required: 'Correo es requerido.',
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        message: 'Correo electrónico inválido.',
+                      },
+                    }}
+                    render={({ field, fieldState }) => (
+                      <>
+                        <label htmlFor={field.name} className={classNames({ 'p-error': errors.email })}></label>
+                        <span className="p-float-label">
+                          <InputText
+                            id={field.name}
+                            value={field.value}
+                            className={classNames({ 'p-invalid': fieldState.error })}
+                            onChange={(e) => field.onChange(e.target.value)}
+                          />
+                          <label htmlFor={field.name}>Correo</label>
+                        </span>
+                        {getFormErrorMessage('email')}
+                      </>
+                    )}
+                  />
+                </div>
+                <div className="mb-3">
+                  <Controller name="username" control={control} rules={{ required: 'Username es requerido.' }}
+                    render={({ field, fieldState }) => (
+                      <>
+                        <label htmlFor={field.name} className={classNames({ 'p-error': errors.username })}></label>
+                        <span className="p-float-label">
+                          <InputText
+                            id={field.name}
+                            value={field.value}
+                            className={classNames({ 'p-invalid': fieldState.error })}
+                            onChange={(e) => field.onChange(e.target.value)}
+                          />
+                          <label htmlFor={field.name}>Username</label>
+                        </span>
+                        {getFormErrorMessage('username')}
+                      </>
+                    )}
+                  />
+                </div>
+                <div className="row g-3">
+                  <div className="col">
+                    <Controller
+                      name="password"
+                      control={control}
+                      rules={{ required: 'Contraseña es requerida.' }}
+                      render={({ field, fieldState }) => (
+                        <>
+                          <label htmlFor={field.name} className={classNames({ 'p-error': errors.password })}></label>
+                          <span className="p-float-label">
+                            <Password
+                              id={field.name}
+                              value={field.value}
+                              className={classNames({ 'p-invalid': fieldState.error })}
+                              onChange={(e) => field.onChange(e.target.value)}
+                              toggleMask
+                              footer={footer}
+                            />
+                            <label htmlFor={field.name}>Contraseña</label>
+                          </span>
+                          {getFormErrorMessage('password')}
+                        </>
+                      )}
+                    />
+                  </div>
+                  <div className="col">
+                    <Controller
+                      name="confirm_password"
+                      control={control}
+                      rules={{
+                        required: 'Confirmar contraseña es requerido.',
+                        validate: value => value === password || 'Las contraseñas no coinciden'
+                      }}
+                      render={({ field, fieldState }) => (
+                        <>
+                          <label htmlFor={field.name} className={classNames({ 'p-error': errors.confirm_password })}></label>
+                          <span className="p-float-label">
+                            <Password
+                              id={field.name}
+                              value={field.value}
+                              className={classNames({ 'p-invalid': fieldState.error })}
+                              onChange={(e) => field.onChange(e.target.value)}
+                              toggleMask
+                              feedback={false}
+                            />
+                            <label htmlFor={field.name}>Confirmar Contraseña</label>
+                          </span>
+                          {getFormErrorMessage('confirm_password')}
+                        </>
+                      )}
+                    />
+                  </div>
+                </div>
 
-            <Button label="Submit" type='submit' icon="pi pi-check" iconPos="right" className="mt-3" />
-            <Link to="/login" className="text-sm font-light text-gray-500 dark:text-gray-400 mt-2 d-flex align-items-center">
-              <p className="m-0 me-2">¿Ya tienes cuenta?</p>
-              <button type="button" className="btn btn-outline-primary btn-sm">Inicia Sesión</button>
-            </Link>
-          </form>
+                <Button label="Submit" type='submit' icon="pi pi-check" iconPos="right" className="mt-3" />
+                <Link to="/login" className="text-sm font-light text-gray-500 dark:text-gray-400 mt-2 d-flex align-items-center">
+                  <p className="m-0 me-2">¿Ya tienes cuenta?</p>
+                  <button type="button" className="btn btn-outline-primary btn-sm">Inicia Sesión</button>
+                </Link>
+              </form>
+            </Card>
+          </Fieldset>
         </div>
       </div>
     </div>

@@ -107,74 +107,60 @@ export function CreateQRCard() {
           <Toast ref={toast} />
           <form onSubmit={handleGenerateQR}>
             <div className="container text-center">
-              <div className='row'>
-                <div className="col">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Nombre del QR:
-                    </span>
-                    <InputText value={qrName} onChange={(e) => setQRName(e.target.value)} />
-                  </div>
+              <div className='row m-2 m-md-4'>
+                <div className="col-12">
+                  <span className="p-float-label">
+                    <InputText id="nombre" value={qrName} onChange={(e) => setQRName(e.target.value)} style={{ width: '100%' }} />
+                    <label htmlFor="nombre">Nombre</label>
+                  </span>
                 </div>
               </div>
               <br />
-              <div className="row">
+              <div className="row m-2 m-md-4">
                 <div className="col-12 col-md-6">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Nombre y Apellido:
-                    </span>
-                    <InputText value={qrNameAndSurName} onChange={(e) => setQRNameAndSurName(e.target.value)} />
-                  </div>
+                  <span className="p-float-label">
+                    <InputText id="nombre_apellido" value={qrNameAndSurName} onChange={(e) => setQRNameAndSurName(e.target.value)} style={{ width: '100%' }} />
+                    <label htmlFor="nombre_apellido">Nombre\s y Apellido\s</label>
+                  </span>
                 </div>
                 <br />
                 <div className="col-12 col-md-6 mt-2 mt-md-0">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Email:
-                    </span>
-                    <InputText value={qrEmail} onChange={(e) => setQREmail(e.target.value)} />
-                  </div>
+                  <span className="p-float-label">
+                    <InputText id="email" value={qrEmail} onChange={(e) => setQREmail(e.target.value)} style={{ width: '100%' }} />
+                    <label htmlFor="email">Email</label>
+                  </span>
                 </div>
               </div>
               <br />
-              <div className="row">
+              <div className="row m-2 m-md-4">
                 <div className="col-12 col-md-6">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Direccion:
-                    </span>
-                    <InputText value={qrAddress} onChange={(e) => setQRAddress(e.target.value)} />
-                  </div>
+                  <span className="p-float-label">
+                    <InputText id="direccion" value={qrAddress} onChange={(e) => setQRAddress(e.target.value)} style={{ width: '100%' }} />
+                    <label htmlFor="direccion">Direccion</label>
+                  </span>
                 </div>
                 <br />
                 <div className="col-12 col-md-6 mt-2 mt-md-0">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Empresa:
-                    </span>
-                    <InputText value={qrCompany} onChange={(e) => setQRCompany(e.target.value)} />
-                  </div>
+                  <span className="p-float-label">
+                    <InputText id="empresa" value={qrCompany} onChange={(e) => setQRCompany(e.target.value)} style={{ width: '100%' }} />
+                    <label htmlFor="empresa">Empresa</label>
+                  </span>
                 </div>
               </div>
               <br />
-              <div className="row">
+              <div className="row m-2 m-md-4">
                 <div className="col-12 col-md-6">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Web:
-                    </span>
-                    <InputText value={qrWeb} onChange={(e) => setQRWeb(e.target.value)} />
-                  </div>
+                  <span className="p-float-label">
+                    <InputText id="web" value={qrWeb} onChange={(e) => setQRWeb(e.target.value)} style={{ width: '100%' }} />
+                    <label htmlFor="web">Web</label>
+                  </span>
                 </div>
                 <br />
                 <div className="col-12 col-md-6 mt-2 mt-md-0">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Cargo:
-                    </span>
-                    <InputText value={qrPositionCompany} onChange={(e) => setQRPositionCompany(e.target.value)} />
-                  </div>
+                  <span className="p-float-label">
+                    <InputText id="cargo" value={qrPositionCompany} onChange={(e) => setQRPositionCompany(e.target.value)} style={{ width: '100%' }} />
+                    <label htmlFor="cargo">Cargo</label>
+                  </span>
                 </div>
               </div>
               <br />
@@ -189,7 +175,7 @@ export function CreateQRCard() {
               )}
             </div>
             <br />
-            <div className="row">
+            <div className="row m-2 m-md-4">
               <div className="ccol-12 col-md-6">
                 <div className="p-inputgroup">
                   <span className="p-inputgroup-addon">
@@ -209,28 +195,18 @@ export function CreateQRCard() {
               </div>
             </div>
             <br />
-            <div className="col-12 col-md-6">
-              <div className="p-inputgroup">
-                <span className="p-inputgroup-addon" style={{ width: '100%' }}>
-                  Guardar y Administrar QR
-                </span>
-                <Button icon="pi pi-cog" severity="secondary" type="submit"  style={{ width: '40%' }} />
-                <i className="pi pi-question m-2 m-md-4" style={{ color: 'var(--primary-color)' }}></i>
+            <div className="container text-center">
+              <div className="col">
+                <Button icon="pi pi-cog" label='Guardar y Administrar QR' severity="secondary" type="submit" style={{ width: '100%' }} />
               </div>
             </div>
             <br />
           </form>
-          <div className="col-12 col-md-6 mt-2 mt-md-0">
-            <div className="p-inputgroup">
-              <span className="p-inputgroup-addon" style={{ width: '100%' }}>
-                Descargar QR
-              </span>
-              <Button icon="pi pi-download" severity="help" onClick={handleDownloadQR}  style={{ width: '40%' }} />
-              <i className="pi pi-question m-2 m-md-4" style={{ color: 'var(--primary-color)' }} ></i>
+          <div className="container text-center">
+            <div className="col mt-2 mt-md-0">
+              <Button icon="pi pi-download" label='Descargar QR' severity="help" onClick={handleDownloadQR} style={{ width: '100%' }} />
             </div>
           </div>
-
-
         </Card>
       </Fieldset>
     </div >

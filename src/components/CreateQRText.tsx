@@ -85,27 +85,20 @@ export function CreateQRText() {
         <Card title="Crear QR de Texto">
           <Toast ref={toast} />
           <form onSubmit={handleGenerateQR}>
-            <div className="container">
-              <div className="row">
-                <div className="col-12 col-md-6">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Nombre:
-                    </span>
-                    <InputText value={qrName} onChange={(e) => setQRName(e.target.value)} />
-                  </div>
-                </div>
-                <div className="col-12 col-md-6 mt-2 mt-md-0">
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">
-                      Contenido:
-                    </span>
-                    <InputTextarea rows={2} value={qrContent} onChange={(e) => setQRContent(e.target.value)} />
-                  </div>
-                </div>
+            <div className="row m-2 m-md-4">
+              <div className="col-12 col-md-6">
+                <span className="p-float-label">
+                  <InputText id="nombre" value={qrName} onChange={(e) => setQRName(e.target.value)} style={{ width: '100%' }} />
+                  <label htmlFor="nombre">Nombre</label>
+                </span>
+              </div>
+              <div className="col-12 col-md-6 mt-2 mt-md-0">
+                <span className="p-float-label">
+                  <InputTextarea rows={2} id="contenido" value={qrContent} onChange={(e) => setQRContent(e.target.value)} style={{ width: '100%' }} />
+                  <label htmlFor="contenido">Contenido</label>
+                </span>
               </div>
             </div>
-            <br />
             <div className="d-flex justify-content-center">
               {qrContent && (
                 <div className="mt-3">
@@ -113,8 +106,7 @@ export function CreateQRText() {
                 </div>
               )}
             </div>
-            <br />
-            <div className="row m-1">
+            <div className="row m-2 m-md-4">
               <div className="col-12 col-md-6">
                 <div className="p-inputgroup">
                   <span className="p-inputgroup-addon">
@@ -133,25 +125,16 @@ export function CreateQRText() {
               </div>
             </div>
             <br />
-            <div className="col-12 col-md-6">
-              <div className="p-inputgroup">
-                <span className="p-inputgroup-addon" style={{ width: '100%' }}>
-                  Guardar y Administrar QR
-                </span>
-                <Button icon="pi pi-cog" severity="secondary" type="submit" style={{ width: '40%' }} />
-                <i className="pi pi-question m-2 m-md-4" style={{ color: 'var(--primary-color)' }}></i>
+            <div className="container text-center">
+              <div className="col">
+                <Button icon="pi pi-cog" label='Guardar y Administrar QR' severity="secondary" type="submit" style={{ width: '100%' }} />
               </div>
             </div>
-
+            <br />
           </form>
-          <br />
-          <div className="col-12 col-md-6 mt-2 mt-md-0">
-            <div className="p-inputgroup">
-              <span className="p-inputgroup-addon" style={{ width: '100%' }}>
-                Descargar QR
-              </span>
-              <Button icon="pi pi-download" severity="help" onClick={handleDownloadQR} style={{ width: '40%' }} />
-              <i className="pi pi-question m-2 m-md-4" style={{ color: 'var(--primary-color)' }}></i>
+          <div className="container text-center">
+            <div className="col mt-2 mt-md-0">
+              <Button icon="pi pi-download" label='Descargar QR' severity="help" onClick={handleDownloadQR} style={{ width: '100%' }} />
             </div>
           </div>
         </Card>
