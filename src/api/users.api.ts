@@ -80,3 +80,16 @@ export const logoutUser = async (): Promise<AxiosResponse<void>> => {
   return authApi.post<void>('logout/', null, { headers });
 }
 
+export const changePassword = async (currentPassword: string, newPassword: string): Promise<AxiosResponse<void>> => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    throw new Error('No se encontró el token de autenticación');
+  }
+
+  const headers = { Authorization: `Token ${token}` };
+  const data = { current_password: currentPassword, new_password: newPassword };
+  return authApi.post<void>('change-password/', data, { headers });
+}
+
+
+

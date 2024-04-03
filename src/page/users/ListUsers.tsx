@@ -18,6 +18,7 @@ import { Tag } from 'primereact/tag';
 
 import { Fieldset } from 'primereact/fieldset'
 import { Card } from 'primereact/card'
+import { ToggleButton } from 'primereact/togglebutton';
 
 
 interface User {
@@ -401,11 +402,16 @@ export function ListUsers() {
                 name="is_active"
                 control={control}
                 render={({ field }) => (
-                  <TriStateCheckbox
+                  <ToggleButton
                     id="is_active"
-                    value={field.value}
-                    onChange={(e: TriStateCheckboxChangeEvent) => field.onChange(e.value)}
+                    checked={field.value}
+                    onChange={(e) => field.onChange(e.value)}
+                    onLabel="Activo"
+                    offLabel="Inactivo"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-times"
                   />
+
                 )}
               />
             </div>

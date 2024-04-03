@@ -90,7 +90,7 @@ export function Register() {
           <Toast ref={toast} />
           <Fieldset>
             <Card>
-              <form className="p-fluid p-d-flex p-flex-column p-ai-center" onSubmit={handleSubmit(onSubmit)}>
+              <form className="p-fluid p-d-flex p-flex-column p-ai-center"  >
                 <div className="row g-3">
                   <div className="col">
                     <Controller name="nombre" control={control} rules={{ required: 'Nombre es requerido.' }}

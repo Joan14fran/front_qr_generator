@@ -109,7 +109,7 @@ export function SidebarComp() {
             <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="">
                 <div className="d-flex flex-column mx-auto md:mx-0">
                     <span className="mb-2 font-weight-bold">Bienvenido</span>
-                    <span className="text-muted font-medium mb-5">{userData.nombre}</span>
+                    <span className="text-muted font-medium mb-5">{userData.nombre} {userData.apellido}</span>
 
                     <ul className="list-unstyled m-0 p-0">
                         <li className="custom-border mb-3 rounded transition-duration-150">
